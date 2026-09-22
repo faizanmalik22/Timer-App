@@ -13,7 +13,7 @@ function Controls({isRunning,setIsRunning, hasStarted,setHasStarted}) {
    return(
      <>
    
-    {hasStarted? <div>
+    {!hasStarted? <div>
        <Button type={'Button'} name={<Play/>} onClickhandler={resethandler} styleType={'primary'} />
       </div>:<div>
       <Button type={'Button'} name={isRunning?<Pause/>:<Play/>} onClickhandler={onClickhandler}  styleType={'primary'}/>

@@ -1,13 +1,13 @@
-function TimerInput({setMinute}){
+function TimerInput({setTotalSeconds}){
     function onChangehandler(e) {
     const value = e.target.value;   // string
-    var minute = Number(value);   // number
+    var minutes = Number(value);   // number
     //validation
-    if(minute===NaN){
+    if(minutes===NaN){
         prompt("Enter a valid Minute");
         return;
     }
-    setMinute(minute);
+    setTotalSeconds(minutes*60);//string as seconds
 }
     return(
         <input 
