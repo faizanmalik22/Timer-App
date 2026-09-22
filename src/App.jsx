@@ -18,6 +18,7 @@ function App() {
 
     //if(totalSeconds==0&&isRunning==true){setIsRunning(false)};//when secrem=1 after register make it false.
    //make another effect for this
+   
    useEffect(()=>{
      if (totalSeconds === 0 && isRunning){setIsRunning(false)};
    },[totalSeconds, isRunning]);
@@ -27,6 +28,7 @@ function App() {
     if(isRunning){
       intervalID.current=setInterval(() => {
         setTotalSeconds(prev=>{
+          console.log(prev); //need to stop timer when reset the timer.
           if(prev<=0)return 0;
           return prev-1;
         });//1 , 1 second kam
@@ -49,7 +51,7 @@ function App() {
 
        {hasStarted? <Display seconds={totalSeconds}/>:<TimerInput setTotalSeconds={setTotalSeconds}/>}
       
-      <TimerControl  setIsRunning={setIsRunning} isRunning={isRunning} hasStarted={hasStarted} setHasStarted={setHasStarted}/>
+      <TimerControl setTotalSeconds={setTotalSeconds} setIsRunning={setIsRunning} isRunning={isRunning} hasStarted={hasStarted} setHasStarted={setHasStarted}/>
     </div>
   </div>
        
