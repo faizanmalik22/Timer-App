@@ -5,21 +5,16 @@ import TimerControl from './Component/TimerControl/TimerControl'
 import TimerInput from './Component/TimerInput/TimerInput'
 import Display from './Component/Display/Display';
 
+
 function App() {
   const [isRunning,setIsRunning]=useState(false);
   const [hasStarted, setHasStarted] = useState(false);//reset
+  const [minutes, setMinutes] = useState("");
   const [totalSeconds, setTotalSeconds] = useState(0);
   const intervalID=useRef(null);
-
-  //stoping rendering loop by adding isrunning
-  
-   /*isRunning = true  → timer should run
-   isRunning = false → timer should NOT run */
-
-    //if(totalSeconds==0&&isRunning==true){setIsRunning(false)};//when secrem=1 after register make it false.
-   //make another effect for this
-   
+ 
    useEffect(()=>{
+    //stop the timer when totalSeconds reaches 0
      if (totalSeconds === 0 && isRunning){setIsRunning(false)};
    },[totalSeconds, isRunning]);
 
@@ -49,9 +44,9 @@ function App() {
     <div className="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl text-center">
       <h1 className="text-3xl font-bold mb-6">TIMER</h1>
 
-       {hasStarted? <Display seconds={totalSeconds}/>:<TimerInput setTotalSeconds={setTotalSeconds}/>}
+       {hasStarted? <Display seconds={totalSeconds}/>:<TimerInput setTotalSeconds={setTotalSeconds} setMinutes={setMinutes}/>}
       
-      <TimerControl setTotalSeconds={setTotalSeconds} setIsRunning={setIsRunning} isRunning={isRunning} hasStarted={hasStarted} setHasStarted={setHasStarted}/>
+      <TimerControl setTotalSeconds={setTotalSeconds} setIsRunning={setIsRunning} isRunning={isRunning} hasStarted={hasStarted} setHasStarted={setHasStarted} minutes={minutes}  setMinutes={setMinutes}/>
     </div>
   </div>
        

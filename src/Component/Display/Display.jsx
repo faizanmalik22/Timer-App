@@ -1,4 +1,3 @@
-import { useState } from "react";
 function Display({seconds}){
     const minute = Math.floor(seconds / 60);
     const second = seconds % 60;
